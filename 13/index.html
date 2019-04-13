@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <link rel="stylesheet" href="css/main.css">
+     <script src="js/react.js"></script>
+
+     <script src="js/react-dom.js" ></script>
+
+     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+  </head>
+  <body>
+    <div id="program"></div>
+  <script  src="js/script.js" type="text/babel">
+  var Task=React.createClass({
+    getInitialState:function(){
+    return (edit:false)
+  },
+    edit:function{
+    this.getState({edit:true})
+    },
+    remove:function{
+    this.props.deleteBlock(this.props.index);
+    },
+    save:function{
+      this.props.update(this.refs.newTxt.value, this.props.index);
+
+    this.getState({edit:false})
+  },
+  rendNorm: function(){
+
+  return(
+  <div className="box">
+    <div className="text">{this.props.children}</div>
+  <button onClick={this.edit} className="btn light"> Редактировать</button>
+<button onClick={this.remove} className="btn red"> Удалить</button>
+</div>
+  );
+}
+rendEdit: function(){
+
+return(
+<div className="box">
+    <textarea ref="newTxt" defaultValue={this.props.children}></textarea>
+<button onClick={this.save} className="btn success"> Сохранить</button>
+</div>
+);
+}
+  render: function(){
+if(this.state.edit){
+  return this.rendEdit();
+} else{
+return this.rendNorm();
+}
+
+}
+});
+  var Field=React.createClass({
+    getInitialState:function(){
+    return {
+      tasks:[
+
+      ]
+    }
+  },
+  add: function(text){
+var arr=this.state.tasks;
+arr.push(text);
+this.setState({tasks:arr});
+  },
+deleteBlock: function(i){
+var arr=this.state.tasks;
+arr.splice(i,1);
+this.setState({tasks:arr});
+},
+updateText: function(text, i){
+var arr=this.state.tasks;
+arr[i]=text;
+this.setState({tasks:arr});
+},
+
+  eachTask:function(task, i){
+  return (<Task key={i} index={i} update={this.updateText} deleteBlock={this.deleteBlock}>
+    {task}
+  </Task>);
+  },
+
+
+
+  render: function(){
+  return(
+    <div className="field">
+      <button onClick={this.add.bind(null, 'Простое задание')} className="btn new"> Новое задание</button>
+    {this.state.tasks.map(eachTask)}
+
+
+
+    </div>
+);
+}
+});
+const app=document.getElementById("program");
+ReactDOM.render(
+<Field />, app);
+
+
+
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this section for a production-ready setup with JSX:
+      http://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+
+      In a larger project, you can use an integrated toolchain that includes JSX instead:
+      http://reactjs.org/docs/create-a-new-react-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      https://reactjs.org/docs/react-without-jsx.html
+    -->
+  </body>
+</html>
