@@ -7,20 +7,21 @@
 
      <script src="js/react-dom.js" ></script>
 
-     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
 
   </head>
   <body>
     <div id="example"></div>
-  <script  src="js/script.js" type="text/babel">
+  <script   type="text/babel">
 var Block=React.createClass({
   render: function(){
   return(<h3>itProgger</h3>);
 }
 });
 ReactDOM.render(
-  <Block />,
+  <Block/>,
   document.getElementById("example")
   );
     </script>
