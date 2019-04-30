@@ -1,8 +1,8 @@
 var Task=React.createClass({
-  edit:function{
+  edit:function(){
     alert("редактировать");
   },
-  remove:function{
+  remove:function(){
     alert("удалить");
   },
   render: function(){
@@ -11,7 +11,7 @@ var Task=React.createClass({
   <div className="box">
     <div className="text">{this.props.children}</div>
   <button onClick={this.edit} > Редактировать</button>
-<button onClick={this.remove} > Удалить</button>
+	<button onClick={this.remove} > Удалить</button>
 </div>
   );
 }
