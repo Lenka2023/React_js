@@ -8,27 +8,28 @@
 
      <script src="js/react-dom.js" ></script>
 
-     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
 
   </head>
   <body>
     <div id="program"></div>
-  <script  src="js/script.js" type="text/babel">
+  <script  type="text/babel">
 var Task=React.createClass({
   getInitialState:function(){
-  return (edit:false)
+  return {edit:false}
 },
-  edit:function{
+  edit:function(){
   this.getState({edit:true})
   },
-  remove:function{
+  remove:function(){
     alert("удалить");
   },
-  save:function{
+  save:function(){
     var value=this.refs.newTxt.value;
   this.getState({edit:false})
-  }
+  },
   rendNorm: function(){
 
   return(
@@ -38,7 +39,7 @@ var Task=React.createClass({
 <button onClick={this.remove} className="btn red"> Удалить</button>
 </div>
   );
-}
+},
 rendEdit: function(){
 
 return(
@@ -47,7 +48,7 @@ return(
 <button onClick={this.save} className="btn success"> Сохранить</button>
 </div>
 );
-}
+},
   render: function(){
 if(this.state.edit){
   return this.rendEdit();
