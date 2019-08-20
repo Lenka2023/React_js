@@ -21,14 +21,14 @@ var Task=React.createClass({
   return {edit:false}
 },
   edit:function(){
-  this.getState({edit:true})
+  this.setState({edit:true})
   },
   remove:function(){
     alert("удалить");
   },
   save:function(){
     var value=this.refs.newTxt.value;
-  this.getState({edit:false})
+  this.setState({edit:false})
   },
   rendNorm: function(){
 
