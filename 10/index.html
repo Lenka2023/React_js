@@ -16,6 +16,52 @@
   <body>
     <div id="program"></div>
   <script type="text/babel">
+  
+  var Task=React.createClass({
+  getInitialState:function(){
+  return {edit:false}
+},
+  edit:function(){
+  this.setState({edit:true})
+  },
+  remove:function(){
+    alert("удалить");
+  },
+  
+  save:function(){
+    var value=this.refs.newTxt.value;
+	alert(value);
+  this.setState({edit:false})
+  },
+ 
+
+  
+
+rendNorm: function(){
+  return(<div className="box">
+    <div className="text">{this.props.children}</div>
+  <button onClick={this.edit} className="btn light"> Редактировать</button>
+<button onClick={this.remove} className="btn red"> Удалить</button>
+</div>
+  );
+},
+rendEdit: function(){
+return(
+<div className="box">
+    <textarea ref="newTxt" defaultValue={this.props.children}></textarea>
+<button onClick={this.save} className="btn success"> Сохранить</button>
+</div>
+);
+},
+  render: function(){
+if(this.state.edit){
+  return this.rendEdit();
+} else{
+return this.rendNorm();
+}
+}
+ });
+
   var Field=React.createClass({
     getInitialState:function(){
     return {
@@ -26,46 +72,16 @@
       ]
     }
   },
-
-  edit:function(){
-  this.getState({edit:true})
-  },
-  remove:function(){
-    alert("удалить");
-  },
-  save:function(){
-    var value=this.refs.newTxt.value;
-  this.getState({edit:false})
-  },
-  rendNorm: function(){
-
-  return(
-  <div className="box">
-    <div className="text">{this.props.children}</div>
-  <button onClick={this.edit} className="btn light"> Редактировать</button>
-<button onClick={this.remove} className="btn red"> Удалить</button>
-</div>
-  );
-},
-rendEdit: function(){
-
-return(
-<div className="box">
-    <textarea ref="newTxt" defaultValue={this.props.children}></textarea>
-<button onClick={this.save} className="btn success"> Сохранить</button>
-</div>
-);
-},
   render: function(){
-    <div className="field">
+    return(<div className="field">
     {this.state.tasks.map(function(task, i){
     return (<Task key={i}>{task}</Task>);
-    })
-
+    }
+	)
     }
 
-    </div>
-
+</div>
+);
 }
 });
 const app=document.getElementById("program");
