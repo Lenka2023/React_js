@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <link rel="stylesheet" href="css/main.css">
+     <script src="js/react.js"></script>
+
+     <script src="js/react-dom.js" ></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+
+  </head>
+  <body>
+    <div id="program"></div>
+  <script type="text/babel">
+  var Check=React.createClass({
+getInitialState:function(){
+      return{checked:true}
+  },
+handleCheck:function(){
+    this.setState({checked: !this.state.checked})
+  },
+  render: function(){
+var message;
+if(this.state.checked){
+message=' выбран';}
+else{
+message=' не выбран';
+}
+
+
+  return(
+  <div >
+    <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked} />
+  <p>Чекбокс{message}</p>
+</div>
+  );
+  }
+});
+const app=document.getElementById("program");
+ReactDOM.render(<Check />, app);
+    </script>
+  </body>
+</html>
