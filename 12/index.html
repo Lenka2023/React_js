@@ -21,7 +21,7 @@
     return {edit:false}
   },
     edit:function(){
-    this.getState({edit:true})
+    this.setState({edit:true})
     },
     remove:function(){
     this.props.deleteBlock(this.props.index);
@@ -29,7 +29,7 @@
     save:function(){
       this.props.update(this.refs.newTxt.value, this.props.index);
 
-    this.getState({edit:false})
+    this.setState({edit:false})
   },
   rendNorm: function(){
 
@@ -91,7 +91,7 @@ this.setState({tasks:arr});
   render: function(){
   return(
     <div className="field">
-    {this.state.tasks.map(eachTask)}
+    {this.state.tasks.map(this.eachTask)}
 
 
 

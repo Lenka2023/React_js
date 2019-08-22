@@ -16,12 +16,12 @@
   <body>
     <div id="program"></div>
   <script   type="text/babel">
-  var Task=React.createClass({
-    getInitialState:function(){
-    return {edit:false}
-  },
+   var Task=React.createClass({
+  getInitialState:function(){
+  return {edit:false}
+},
     edit:function(){
-    this.getState({edit:true})
+    this.setState({edit:true})
     },
     remove:function(){
     this.props.deleteBlock(this.props.index);
@@ -29,7 +29,7 @@
     save:function(){
       this.props.update(this.refs.newTxt.value, this.props.index);
 
-    this.getState({edit:false})
+    this.setState({edit:false})
   },
   rendNorm: function(){
 
@@ -95,7 +95,7 @@ this.setState({tasks:arr});
   return(
     <div className="field">
       <button onClick={this.add.bind(null, 'Простое задание')} className="btn new"> Новое задание</button>
-    {this.state.tasks.map(eachTask)}
+    {this.state.tasks.map(this.eachTask)}
 
 
 
