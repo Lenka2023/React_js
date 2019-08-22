@@ -16,6 +16,7 @@
   <body>
     <div id="program"></div>
   <script  type="text/babel">
+  
 var Task=React.createClass({
   getInitialState:function(){
   return {edit:false}
@@ -28,12 +29,21 @@ var Task=React.createClass({
   },
   save:function(){
     var value=this.refs.newTxt.value;
-  this.setState({edit:false})
+	alert(value);
+  this.setState({edit:false});
   },
-  rendNorm: function(){
+  
+  
 
+    
+  
+
+
+  
+
+  rendNorm: function(){
   return(
-  <div className="box">
+<div className="box">
     <div className="text">{this.props.children}</div>
   <button onClick={this.edit} className="btn light"> Редактировать</button>
 <button onClick={this.remove} className="btn red"> Удалить</button>
@@ -41,7 +51,6 @@ var Task=React.createClass({
   );
 },
 rendEdit: function(){
-
 return(
 <div className="box">
     <textarea ref="newTxt" defaultValue={this.props.children}></textarea>
@@ -55,7 +64,6 @@ if(this.state.edit){
 } else{
 return this.rendNorm();
 }
-
 }
 });
 const app=document.getElementById("program");
